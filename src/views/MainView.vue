@@ -29,13 +29,22 @@ export default Vue.extend({
     }),
   },
   methods: {
-    submitUserId() {
-      if (this.userId.trim()) {
+    async submitUserId() {
+      // Trim whitespace from userId and check if it's not empty
+      const trimmedUserId = this.userId.trim();
+      if (trimmedUserId) {
+        // Clear any previous error messages
         this.$store.commit("clearUserError");
-        // Navigate to the FormView route corresponding to the entered userId
-        this.$router.replace({ path: `${this.userId}` });
+
+        try {
+          // Navigate to the FormView route with the provided User ID
+          await this.$router.replace({ path: `/${trimmedUserId}` });
+        } catch (navigationError) {
+          // Handle any errors that occur during navigation
+          this.$store.commit("setUserError", "Failed to navigate to the requested page. Please try again.");
+        }
       } else {
-        // To handle cases where userId is empty
+        // Handle cases where the User ID is empty
         this.$store.commit(
           "setUserError",
           "User ID cannot be empty. Please enter a valid User ID."
