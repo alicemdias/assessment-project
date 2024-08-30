@@ -7,6 +7,7 @@ import FormComponent from "@/components/form.vue";
 import TextComponent from "@/components/text.vue";
 import SubmitComponent from "./components/submit.vue";
 import FormView from "@/views/FormView.vue";
+import MainView from "@/views/MainView.vue";
 import "bootstrap/dist/css/bootstrap.css";
 
 Vue.config.productionTip = false;
@@ -22,5 +23,6 @@ new Vue({
     TextComponent,
     SubmitComponent,
     FormView,
+    MainView,
   },
 }).$mount("#app");
