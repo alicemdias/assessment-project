@@ -41,7 +41,10 @@ export default Vue.extend({
           await this.$router.replace({ path: `/${trimmedUserId}` });
         } catch (navigationError) {
           // Handle any errors that occur during navigation
-          this.$store.commit("setUserError", "Failed to navigate to the requested page. Please try again.");
+          this.$store.commit(
+            "setUserError",
+            "Failed to navigate to the requested page. Please try again."
+          );
         }
       } else {
         // Handle cases where the User ID is empty
